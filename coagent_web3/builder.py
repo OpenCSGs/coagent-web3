@@ -156,7 +156,7 @@ from coagent.agents.mcp_server import MCPServer
 {%- endif %}
 from coagent.core import AgentSpec, init_logger, new
 from coagent.runtimes import LocalRuntime
-from coagent_web3.core import Application
+from coagent_web3 import Application
 {%- for plugin in plugins %}
 from coagent_web3.plugins import {{ plugin }}
 {%- endfor %}

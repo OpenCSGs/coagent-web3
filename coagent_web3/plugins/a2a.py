@@ -8,7 +8,7 @@ import httpx
 from hypercorn.asyncio import serve
 from hypercorn.config import Config
 
-from coagent_web3.core import Service
+from coagent_web3 import Service
 
 
 class Plugin(Service):

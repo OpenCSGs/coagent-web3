@@ -31,7 +31,7 @@ from telegram.ext import (
     filters,
 )
 
-from coagent_web3.core import Service
+from coagent_web3 import Service
 
 # Enable logging
 logging.basicConfig(
