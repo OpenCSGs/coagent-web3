@@ -129,12 +129,7 @@ readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
     "python-dotenv>=1.1.0",
-    "coagent-python[a2a] @ git+https://github.com/OpenCSGs/coagent.git@2a00e4f2ef9d4d09488f36402a291e12b1753642",
-    "grpcio>=1.73.1",
-    "protobuf>=6.31.1",
-    "google-api-python-client>=2.176.0",
-    "hypercorn>=0.17.3",
-    "python-telegram-bot>=22.2",
+    "coagent-web3 @ git+https://github.com/OpenCSGs/coagent-web3.git@c77dcab02d5dedfcb0c3f3b762000079d7cfd66a",
 ]
 
 [tool.hatch.build.targets.wheel]
@@ -288,7 +283,7 @@ async def run(req: Requirement, out: str) -> None:
         msg.readme_file.save(out)
 
 
-async def main() -> None:
+def main() -> None:
     parser = argparse.ArgumentParser(
         description="Build an agent based on user's requirement."
     )
@@ -308,9 +303,9 @@ async def main() -> None:
     out = args.out
     os.makedirs(out, exist_ok=True)
 
-    await run(req, out)
+    init_logger()
+    asyncio.run(run(req, out))
 
 
 if __name__ == "__main__":
-    init_logger()
-    asyncio.run(main())
+    main()

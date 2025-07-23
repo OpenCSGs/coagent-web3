@@ -16,6 +16,9 @@ dependencies = [
 [tool.hatch.build.targets.wheel]
 packages = ["coagent_web3"]
 
+[project.scripts]
+web3-build = "coagent_web3.builder:main"
+
 [tool.hatch.metadata]
 allow-direct-references = true
 
