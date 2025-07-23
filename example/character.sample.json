@@ -1,12 +1,12 @@
 {
   "name": "<agent_name>",
   "description": "<agent_description>",
+  "prompt": "<agent_instructions>",
   "mcp_servers": [
     {
       "name": "<mcp_server_name>",
       "url": "<mcp_server_url>"
     }
   ],
-  "prompt": "<agent_instructions>",
   "plugins": ["a2a", "telegram"]
 }

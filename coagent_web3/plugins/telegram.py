@@ -75,10 +75,9 @@ class Plugin(Service):
         self.app.add_handler(CommandHandler("help", help_command))
 
         # on non command i.e message - echo the message on Telegram
-        self.app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, self.echo))
+        self.app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, self.chat))
 
         # Run the bot until the user presses Ctrl-C
-        print("haha")
         await self.app.initialize()
         await self.app.updater.start_polling()
         await self.app.start()
@@ -89,22 +88,18 @@ class Plugin(Service):
         await self.app.updater.stop()
         await self.app.shutdown()
 
-    async def echo(self, update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-        """Echo the user message."""
+    async def chat(self, update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+        """Chat with the agent."""
         result = await self.agent.run(
             ChatMessage(role="user", content=update.message.text).encode(),
+            session_id=str(update.message.chat.id),
         )
         msg = ChatMessage.decode(result)
         await update.message.reply_text(msg.content)
         """
-        try:
-            await update.effective_chat.send_message(
-                msg.content,
-                parse_mode=ParseMode.MARKDOWN_V2,
-            )
-        except Exception:
-            await update.effective_chat.send_message(
-                msg.content,
-                parse_mode=ParseMode.HTML,
-            )
+        await update.effective_chat.send_message(
+            msg.content,
+            parse_mode=ParseMode.MARKDOWN_V2,
+            # parse_mode=ParseMode.HTML,
+        )
         """
