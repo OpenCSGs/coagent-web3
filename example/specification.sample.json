@@ -1,7 +1,7 @@
 {
-  "name": "<agent_name>",
-  "description": "<agent_description>",
-  "prompt": "<agent_instructions>",
+  "name": "assistant",
+  "description": "A helpful assistant.",
+  "prompt": "You are a helpful assistant...",
   "mcp_servers": [
     {
       "name": "<mcp_server_name>",

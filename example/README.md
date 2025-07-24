@@ -4,19 +4,19 @@
 
 ### Build
 
-Create a character file `character.json`:
+Create a specification file `specification.json`:
 
 ```bash
 cd example
-cp character.sample.json character.json
+cp specification.sample.json specification.json
 ```
 
-Edit the `character.json` file to your liking.
+Edit the `specification.json` file to your liking.
 
 Build an agent:
 
 ```bash
-web3-build --character=./character.json --out=./out
+web3-build --spec=./specification.json --out=./out
 ```
 
 ### Run

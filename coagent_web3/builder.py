@@ -130,7 +130,7 @@ readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
     "python-dotenv>=1.1.0",
-    "coagent-web3 @ git+https://github.com/OpenCSGs/coagent-web3.git@c77dcab02d5dedfcb0c3f3b762000079d7cfd66a",
+    "coagent-web3 @ git+https://github.com/OpenCSGs/coagent-web3.git@c2d600c919aa16da472c57b7750e9ff2ebd3db32",
 ]
 
 [tool.hatch.build.targets.wheel]
@@ -289,16 +289,16 @@ def main() -> None:
         description="Build an agent based on user's requirement."
     )
     parser.add_argument(
-        "--character", required=True, type=str, help="The character file of the agent"
+        "--spec", required=True, type=str, help="The specification file of the agent"
     )
     parser.add_argument(
         "--out", type=str, default=".", help="Output directory for generated files"
     )
     args = parser.parse_args()
 
-    with open(args.character, "r") as f:
-        character = f.read()
-    metadata = AgentMetadata.model_validate_json(character)
+    with open(args.spec, "r") as f:
+        specification = f.read()
+    metadata = AgentMetadata.model_validate_json(specification)
     req = Requirement(data=metadata)
 
     out = args.out
