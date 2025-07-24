@@ -60,7 +60,7 @@ class Artifact(Message):
 AGENT_TEMPLATE = '''\
 import os
 
-from coagent.agents import ChatAgent, Model
+from coagent.agents import ChatAgent, Model, InMemMemory
 {%- if mcp_servers %}
 from coagent.agents.mcp_server import (
     Connect,
@@ -96,6 +96,7 @@ class Agent(ChatAgent):
 
     system = "{{ prompt }}"
     model = model
+    memory = InMemMemory()
     {%- if mcp_servers %}
     mcp_servers = [
         {%- for server in mcp_servers %}

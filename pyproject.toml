@@ -5,7 +5,7 @@ description = "Coagent for Wb3."
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
-    "coagent-python[a2a] @ git+https://github.com/OpenCSGs/coagent.git@ffc7f9a65040ec0440afefce5ffa2025c4535d51",
+    "coagent-python[a2a] @ git+https://github.com/OpenCSGs/coagent.git@ee557a2d875665bcb6f49f87d1ce11317e53125b",
     "grpcio>=1.73.1",
     "protobuf>=6.31.1",
     "google-api-python-client>=2.176.0",
